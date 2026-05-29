@@ -356,6 +356,20 @@
 
   .week-card.completed .week-title { color: var(--text2); }
 
+  .week-schedule {
+    padding: 0.4rem 1rem;
+    font-size: 11px;
+    color: var(--green-dim);
+    background: var(--green-bg);
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.3px;
+  }
+
+  .week-card.completed .week-schedule {
+    color: var(--text3);
+    background: transparent;
+  }
+
   /* Complete label */
   .week-done-label {
     display: none;
@@ -578,6 +592,7 @@ const WEEKS = [
       {
         id: 1,
         title: "Repaso: nmap y enumeración",
+        schedule: "Mié 15:00-17:00 · Vie 14:00-16:00 · Dom 14:00-16:00",
         tasks: [
           "🔁 Repaso: nmap con -sV, -sC, -p-, --script y -oN",
           "🔁 Repaso: gobuster y ffuf para fuzzing web",
@@ -589,6 +604,7 @@ const WEEKS = [
       {
         id: 2,
         title: "Repaso: servicios + intro pivoting",
+        schedule: "Mié 15:00-17:00 · Vie 14:00-16:00 · Dom 14:00-16:00",
         tasks: [
           "🔁 Repaso: enumeración de SMB (smbclient, enum4linux)",
           "🔁 Repaso: enumeración de FTP y SSH",
@@ -608,6 +624,7 @@ const WEEKS = [
       {
         id: 3,
         title: "Repaso: SQLi y XSS + LFI",
+        schedule: "Mié 15:00-18:00 · Vie 15:00-18:00 · Dom 14:00-17:00",
         tasks: [
           "🔁 Repaso: SQL Injection manual y con sqlmap",
           "🔁 Repaso: XSS reflejado y almacenado en DVWA",
@@ -619,6 +636,7 @@ const WEEKS = [
       {
         id: 4,
         title: "Repaso: Burp Suite + port forwarding",
+        schedule: "Mié 15:00-18:00 · Vie 15:00-18:00 · Dom 14:00-17:00",
         tasks: [
           "🔁 Repaso: Burp Suite — interceptar, repetir y modificar requests",
           "🔁 Repaso: subida de archivos y bypass de extensiones",
@@ -638,6 +656,7 @@ const WEEKS = [
       {
         id: 5,
         title: "Repaso: escalada de privilegios + Metasploit",
+        schedule: "Mié 15:00-18:00 · Vie 14:00-17:00 · Dom 14:00-17:00",
         tasks: [
           "🔁 Repaso: escalada Linux — sudo, SUID, cron jobs",
           "🔁 Repaso: LinPEAS para enumeración automática",
@@ -649,6 +668,7 @@ const WEEKS = [
       {
         id: 6,
         title: "Repaso: hash cracking + Windows",
+        schedule: "Mié 15:00-18:00 · Vie 14:00-17:00 · Dom 14:00-17:00",
         tasks: [
           "🔁 Repaso: john y hashcat con distintos formatos",
           "🔁 Repaso: hydra para fuerza bruta (SSH, HTTP, FTP)",
@@ -668,6 +688,7 @@ const WEEKS = [
       {
         id: 7,
         title: "Simulacro de red completa",
+        schedule: "Mié 15:00-19:00 · Vie 14:00-19:00 · Dom 14:00-18:00",
         tasks: [
           "🔁 Repaso general: repasar todas tus notas propias",
           "🆕 VulnHub o INE labs: red con múltiples máquinas",
@@ -679,6 +700,7 @@ const WEEKS = [
       {
         id: 8,
         title: "Examen eJPT",
+        schedule: "Vie 14:00 → lanzar examen · Dom apoyo si necesitas",
         tasks: [
           "Repasar cheatsheets: nmap, Metasploit, pivoting, web",
           "Completar labs de práctica oficiales del eJPT en INE",
@@ -748,6 +770,7 @@ function render() {
             <span class="week-title">${w.title}</span>
             <button class="week-check" onclick="toggleWeek(${w.id})" title="${isDone ? 'Marcar pendiente' : 'Marcar completada'}">✓</button>
           </div>
+          <div class="week-schedule"><i>⏰</i> ${w.schedule}</div>
           <ul class="week-tasks">
             ${w.tasks.map(t => `<li>${t}</li>`).join('')}
           </ul>
